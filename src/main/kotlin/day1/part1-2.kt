@@ -29,6 +29,7 @@ fun part2() {
     val regex = Regex(optionsList.joinToString("|"))
     inputFile.forEachLine { line ->
         val matches = regex.findAll(line).map { it.value }.toList()
+        println(matches)
         if (matches.isNotEmpty()) {
             val firstMatch = matches.first()
             val lastMatch = matches.last()
