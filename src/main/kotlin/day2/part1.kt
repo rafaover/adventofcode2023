@@ -8,9 +8,6 @@ fun main() {
 
 fun part1() {
     val input = File("src/main/kotlin/day2/input.txt")
-    val redCubes = 12
-    val greenCubes = 13
-    val blueCubes = 14
     var idSum = 0
     input.forEachLine { line ->
         val gameNumber = line.substringAfter("Game").substringBefore(":").trim().toInt()
@@ -20,9 +17,10 @@ fun part1() {
             val gameDrawItem = gameDraw[i]
             if (gameDrawItem.toIntOrNull() == null) {
                 val previousCubeCount = gameDraw[i - 1].toInt()
-                if (gameDrawItem == "red" && previousCubeCount > redCubes) conditionsMet = false
-                if (gameDrawItem == "green" && previousCubeCount > greenCubes) conditionsMet = false
-                if (gameDrawItem == "blue" && previousCubeCount > blueCubes) conditionsMet = false
+                if ((gameDrawItem == "red" && previousCubeCount > 12) ||
+                (gameDrawItem == "green" && previousCubeCount > 13) ||
+                (gameDrawItem == "blue" && previousCubeCount > 14))
+                    conditionsMet = false
             }
         }
         if (conditionsMet) idSum += gameNumber
